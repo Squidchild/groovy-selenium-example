@@ -1,6 +1,9 @@
 package org.example.coca_cola
 
 import org.example.BaseSeleniumTest
+import org.example.coca_cola.page_objects.AboutPage
+import org.example.coca_cola.page_objects.ContactPage
+import org.example.coca_cola.page_objects.HomePage
 import org.junit.jupiter.api.*
 
 class DemoTest extends BaseSeleniumTest {
@@ -33,5 +36,21 @@ class DemoTest extends BaseSeleniumTest {
 		// Closes the cookie modal then verifies it is closed
 		cokeHomePage.clickOneTrustCloseButton()
 		assert !cokeHomePage.isOneTrustModalOpen()
+	}
+
+	@Test
+	void homeAboutContact() {
+		// Ilikebeerpage
+		homePage.go()
+		assert homePage.at()
+
+		homePage.clickAboutLink()
+		assert aboutPage.at()
+
+		aboutPage.clickContactLink()
+		assert contactPage.at()
+
+		assert contactPage.readRedText().contains("text with")
+
 	}
 }
